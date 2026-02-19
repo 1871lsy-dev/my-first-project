@@ -1,75 +1,95 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to My Personal Site</title>
+    <title>나의 소개</title>
     <style>
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            transition: background-color 0.3s;
-        }
-        .dark-mode {
-            background-color: #121212;
+            background: linear-gradient(135deg, #8E44AD, #3498DB);
             color: white;
+            overflow-x: hidden;
         }
-        .hero {
+        #hero {
             height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(to right, #ff7e5f, #feb47b);
-            position: relative;
-        }
-        .nav {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-        }
-        .nav a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-        }
-        .toggle {
-            cursor: pointer;
-            background-color: #fff;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-        }
-        .content {
             text-align: center;
-            animation: fadeIn 1.5s;
         }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+        #hero h1 {
+            font-size: 4em;
+            margin: 0;
+        }
+        #hero h2 {
+            font-size: 2em;
+            margin: 10px 0;
+        }
+        .introduction {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 2em 0;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            margin: 1em;
+            padding: 1em;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        .footer {
+            text-align: center;
+            padding: 2em 0;
+        }
+        .icons {
+            display: flex;
+            justify-content: center;
+        }
+        .icon {
+            margin: 0 10px;
+            font-size: 2em;
         }
     </style>
 </head>
 <body>
-    <div class="hero" id="heroSection">
-        <div class="nav">
-            <button class="toggle" onclick="toggleMode()">Toggle Dark Mode</button>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
+    <div id="hero">
+        <h1>나의 소개</h1>
+        <h2>배우며 성장하는 중입니다</h2>
+    </div>
+    <div class="introduction">
+        <div class="card">
+            <h3>소개 카드 1</h3>
+            <p>여기에 소개 내용을 추가합니다.</p>
         </div>
-        <div class="content">
-            <h1>Welcome to My Personal Introduction</h1>
-            <p>I'm a web developer passionate about creating modern, functional websites.</p>
+        <div class="card">
+            <h3>소개 카드 2</h3>
+            <p>여기에 소개 내용��� 추가합니다.</p>
+        </div>
+        <div class="card">
+            <h3>소개 카드 3</h3>
+            <p>여기에 소개 내용을 추가합니다.</p>
         </div>
     </div>
+    <div class="footer">
+        <h4>Favorite Things</h4>
+        <div class="icons">
+            <div class="icon">🌟</div>
+            <div class="icon">🎨</div>
+            <div class="icon">🎶</div>
+        </div>
+        <p><a href="https://github.com/1871lsy-dev/my-first-project" style="color: white; text-decoration: none;">GitHub</a></p>
+    </div>
     <script>
-        function toggleMode() {
-            const body = document.body;
-            body.classList.toggle('dark-mode');
-        }
+        // Smooth scroll animations can be added here
     </script>
 </body>
 </html>
