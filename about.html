@@ -1,15 +1,57 @@
-
-나를 소개하는 웹페이지를 만들어줘.
-
-내 정보:
-- 이름: ✏️ (예: 이순영)
-- 사는 곳: ✏️ (예: 강원도 화천)
-- 좋아하는 것: ✏️ (예: 요리, 산책, 음악 듣기)
-- 한마디: ✏️ (예: 오늘도 배우며 성장 중입니다!)
-
-요구사항:
-- 예쁜 그라데이션 배경
-- 프로필 카드 스타일
-- 이름, 소개, 좋아하는 것 목록 표시
-- 귀여운 이모지 사용
-- HTML, CSS, JavaScript 하나의 파일로
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, #fbc2eb, #a6c1ee);
+            font-family: Arial, sans-serif;
+        }
+        .profile-card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        .intro {
+            font-size: 18px;
+            color: #666;
+        }
+        .favorite-things {
+            list-style: none;
+            padding: 0;
+            color: #444;
+        }
+        .favorite-things li {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-card">
+        <h1>1871lsy-dev</h1>
+        <p class="intro">Hello! I'm a passionate developer excited about creating amazing web experiences.</p>
+        <h2>Favorite Things:</h2>
+        <ul class="favorite-things">
+            <li>💻 Coding</li>
+            <li>🎨 Design</li>
+            <li>📚 Reading</li>
+            <li>🌍 Traveling</li>
+            <li>🎶 Music</li>
+        </ul>
+    </div>
+    <script>
+        console.log('Profile card loaded!');
+    </script>
+</body>
+</html>
