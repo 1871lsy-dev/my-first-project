@@ -3,55 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me</title>
+    <title>Welcome to My Personal Site</title>
     <style>
         body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s;
+        }
+        .dark-mode {
+            background-color: #121212;
+            color: white;
+        }
+        .hero {
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            background: linear-gradient(to right, #fbc2eb, #a6c1ee);
-            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            position: relative;
         }
-        .profile-card {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        .nav {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+        .nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        .toggle {
+            cursor: pointer;
+            background-color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+        .content {
             text-align: center;
+            animation: fadeIn 1.5s;
         }
-        h1 {
-            color: #333;
-        }
-        .intro {
-            font-size: 18px;
-            color: #666;
-        }
-        .favorite-things {
-            list-style: none;
-            padding: 0;
-            color: #444;
-        }
-        .favorite-things li {
-            font-size: 16px;
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="profile-card">
-        <h1>나의 소개</h1>
-        <p class="intro">Hello! I'm a passionate developer excited about creating amazing web experiences.</p>
-        <h2>Favorite Things:</h2>
-        <ul class="favorite-things">
-            <li>💻 Coding</li>
-            <li>🎨 Design</li>
-            <li>📚 Reading</li>
-            <li>🌍 Traveling</li>
-            <li>🎶 Music</li>
-        </ul>
+    <div class="hero" id="heroSection">
+        <div class="nav">
+            <button class="toggle" onclick="toggleMode()">Toggle Dark Mode</button>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="content">
+            <h1>Welcome to My Personal Introduction</h1>
+            <p>I'm a web developer passionate about creating modern, functional websites.</p>
+        </div>
     </div>
     <script>
-        console.log('Profile card loaded!');
+        function toggleMode() {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+        }
     </script>
 </body>
 </html>
