@@ -1,293 +1,143 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>할 일 메모장</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .container {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            width: 100%;
-            max-width: 500px;
-            padding: 40px;
-        }
-
-        h1 {
-            color: #333;
-            margin-bottom: 30px;
-            text-align: center;
-            font-size: 28px;
-        }
-
-        .input-group {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 30px;
-        }
-
-        #taskInput {
-            flex: 1;
-            padding: 12px 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: border-color 0.3s;
-        }
-
-        #taskInput:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-
-        #addBtn {
-            padding: 12px 25px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        #addBtn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
-        }
-
-        #addBtn:active {
-            transform: translateY(0);
-        }
-
-        .task-list {
-            list-style: none;
-        }
-
-        .task-item {
-            display: flex;
-            align-items: center;
-            padding: 15px;
-            background: #f9f9f9;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            transition: all 0.3s;
-        }
-
-        .task-item:hover {
-            background: #f0f0f0;
-            transform: translateX(5px);
-        }
-
-        .task-item.completed {
-            opacity: 0.6;
-        }
-
-        .task-item.completed .task-text {
-            text-decoration: line-through;
-            color: #999;
-        }
-
-        .checkbox {
-            width: 20px;
-            height: 20px;
-            margin-right: 15px;
-            cursor: pointer;
-            accent-color: #667eea;
-        }
-
-        .task-text {
-            flex: 1;
-            color: #333;
-            font-size: 16px;
-            word-break: break-word;
-        }
-
-        .delete-btn {
-            padding: 8px 12px;
-            background: #ff6b6b;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 600;
-            transition: all 0.2s;
-        }
-
-        .delete-btn:hover {
-            background: #ff5252;
-            transform: scale(1.05);
-        }
-
-        .empty-message {
-            text-align: center;
-            color: #999;
-            padding: 40px 20px;
-            font-size: 16px;
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 25px;
-            }
-
-            h1 {
-                font-size: 24px;
-                margin-bottom: 25px;
-            }
-
-            .input-group {
-                flex-direction: column;
-            }
-
-            #addBtn {
-                width: 100%;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>할 일 메모장</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .container {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      width: 400px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    h1 {
+      text-align: center;
+      color: #764ba2;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+    .input-area {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    input {
+      flex: 1;
+      padding: 12px;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      font-size: 16px;
+      outline: none;
+    }
+    input:focus { border-color: #764ba2; }
+    button.add-btn {
+      padding: 12px 20px;
+      background: #764ba2;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button.add-btn:hover { background: #667eea; }
+    .todo-item {
+      display: flex;
+      align-items: center;
+      padding: 12px;
+      margin-bottom: 10px;
+      background: #f8f9fa;
+      border-radius: 10px;
+      gap: 10px;
+    }
+    .todo-item input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      flex: none;
+    }
+    .todo-text {
+      flex: 1;
+      font-size: 16px;
+      color: #333;
+    }
+    .todo-text.done {
+      text-decoration: line-through;
+      color: #aaa;
+    }
+    button.del-btn {
+      padding: 6px 12px;
+      background: #ff6b6b;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .empty {
+      text-align: center;
+      color: #aaa;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>📝 할 일 메모장</h1>
-        
-        <div class="input-group">
-            <input 
-                type="text" 
-                id="taskInput" 
-                placeholder="새로운 할 일을 입력하세요..."
-                autocomplete="off"
-            >
-            <button id="addBtn">추가</button>
-        </div>
-
-        <ul class="task-list" id="taskList"></ul>
-        <div class="empty-message" id="emptyMessage">할 일을 추가해보세요! 😊</div>
+  <div class="container">
+    <h1>📝 할 일 메모장</h1>
+    <div class="input-area">
+      <input type="text" id="todoInput" placeholder="할 일을 입력하세요..." />
+      <button class="add-btn" onclick="addTodo()">추가</button>
     </div>
+    <div id="todoList">
+      <p class="empty">아직 할 일이 없어요! 위에 입력해보세요 😊</p>
+    </div>
+  </div>
+  <script>
+    const input = document.getElementById('todoInput');
+    const list = document.getElementById('todoList');
 
-    <script>
-        const taskInput = document.getElementById('taskInput');
-        const addBtn = document.getElementById('addBtn');
-        const taskList = document.getElementById('taskList');
-        const emptyMessage = document.getElementById('emptyMessage');
+    input.addEventListener('keypress', e => {
+      if (e.key === 'Enter') addTodo();
+    });
 
-        // 로컬스토리지에서 할 일 불러오기
-        function loadTasks() {
-            const savedTasks = localStorage.getItem('tasks');
-            return savedTasks ? JSON.parse(savedTasks) : [];
-        }
+    function addTodo() {
+      const text = input.value.trim();
+      if (!text) return;
+      const empty = list.querySelector('.empty');
+      if (empty) empty.remove();
 
-        // 로컬스토리지에 할 일 저장하기
-        function saveTasks(tasks) {
-            localStorage.setItem('tasks', JSON.stringify(tasks));
-        }
+      const item = document.createElement('div');
+      item.className = 'todo-item';
+      item.innerHTML = `
+        <input type="checkbox" onchange="toggleDone(this)">
+        <span class="todo-text">${text}</span>
+        <button class="del-btn" onclick="deleteTodo(this)">삭제</button>
+      `;
+      list.appendChild(item);
+      input.value = '';
+    }
 
-        // 화면에 할 일 표시하기
-        function renderTasks() {
-            const tasks = loadTasks();
-            taskList.innerHTML = '';
+    function toggleDone(checkbox) {
+      const text = checkbox.nextElementSibling;
+      text.classList.toggle('done', checkbox.checked);
+    }
 
-            if (tasks.length === 0) {
-                emptyMessage.style.display = 'block';
-                return;
-            }
-
-            emptyMessage.style.display = 'none';
-
-            tasks.forEach((task, index) => {
-                const li = document.createElement('li');
-                li.className = `task-item ${task.completed ? 'completed' : ''}`;
-
-                const checkbox = document.createElement('input');
-                checkbox.type = 'checkbox';
-                checkbox.className = 'checkbox';
-                checkbox.checked = task.completed;
-                checkbox.addEventListener('change', () => toggleTask(index));
-
-                const span = document.createElement('span');
-                span.className = 'task-text';
-                span.textContent = task.text;
-
-                const deleteBtn = document.createElement('button');
-                deleteBtn.className = 'delete-btn';
-                deleteBtn.textContent = '삭제';
-                deleteBtn.addEventListener('click', () => deleteTask(index));
-
-                li.appendChild(checkbox);
-                li.appendChild(span);
-                li.appendChild(deleteBtn);
-                taskList.appendChild(li);
-            });
-        }
-
-        // 할 일 추가하기
-        function addTask() {
-            const text = taskInput.value.trim();
-
-            if (text === '') {
-                alert('할 일을 입력해주세요!');
-                return;
-            }
-
-            const tasks = loadTasks();
-            tasks.push({
-                text: text,
-                completed: false,
-                createdAt: new Date().toISOString()
-            });
-
-            saveTasks(tasks);
-            taskInput.value = '';
-            taskInput.focus();
-            renderTasks();
-        }
-
-        // 할 일 완료 토글하기
-        function toggleTask(index) {
-            const tasks = loadTasks();
-            tasks[index].completed = !tasks[index].completed;
-            saveTasks(tasks);
-            renderTasks();
-        }
-
-        // 할 일 삭제하기
-        function deleteTask(index) {
-            if (confirm('정말 삭제하시겠습니까?')) {
-                const tasks = loadTasks();
-                tasks.splice(index, 1);
-                saveTasks(tasks);
-                renderTasks();
-            }
-        }
-
-        // 이벤트 리스너
-        addBtn.addEventListener('click', addTask);
-        taskInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                addTask();
-            }
-        });
-
-        // 초기 렌더링
-        renderTasks();
-    </script>
+    function deleteTodo(btn) {
+      btn.parentElement.remove();
+      if (list.children.length === 0) {
+        list.innerHTML = '<p class="empty">아직 할 일이 없어요! 위에 입력해보세요 😊</p>';
+      }
+    }
+  </script>
 </body>
 </html>
